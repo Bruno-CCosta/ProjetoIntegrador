@@ -15,44 +15,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.GeneUnion.LeriGo.model.modelCategoria;
-import com.GeneUnion.LeriGo.repository.repositoryCategoria;
+import com.GeneUnion.LeriGo.model.modelUsuario;
+import com.GeneUnion.LeriGo.repository.repositoryUsuario;
 
 @RestController
-@RequestMapping("/categoria")
-public class controllerCategoria {
+@RequestMapping("/usuario")
+public class controllerUsuario {
 
 	@Autowired
-	private repositoryCategoria repository;
+	private repositoryUsuario repository;
 	
 	@GetMapping
-	public List<modelCategoria> buscarTodos(){
+	public List<modelUsuario> buscarTodos(){
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<modelCategoria> GetById(@PathVariable Long id){
+	public Optional<modelUsuario> GetById(@PathVariable Long id){
 		return repository.findById(id);
 	}
 	
-	@GetMapping("/tipo.{tipo}")
-	public ResponseEntity<List<modelCategoria>> GetByTitulo(@PathVariable String tipo){
-		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));	
+	@GetMapping("/nome.{nome}")
+	public ResponseEntity<List<modelUsuario>> GetByNome(@PathVariable String nome){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));	
 	}
 	
 	@PostMapping
-	public ResponseEntity<modelCategoria> post (@RequestBody modelCategoria Categoria){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Categoria));
+	public ResponseEntity<modelUsuario> post (@RequestBody modelUsuario nome){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(nome));
 	}
 	
 	@PutMapping
-	public ResponseEntity<modelCategoria> put (@RequestBody modelCategoria Categoria){
-		return ResponseEntity.status(HttpStatus.OK).body(repository.save(Categoria));
+	public ResponseEntity<modelUsuario> put (@RequestBody modelUsuario nome){
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(nome));
 	}
 	
 	@DeleteMapping("/delete.{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+
 	
 }
