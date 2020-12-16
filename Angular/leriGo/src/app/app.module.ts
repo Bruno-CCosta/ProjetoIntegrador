@@ -15,7 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PerfilLateralComponent } from './perfil-lateral/perfil-lateral.component';
 import { MinhaContaComponent } from './minha-conta/minha-conta.component';
-import { PutComponent } from './put/put.component';
+import { DoacaoComponent } from './doacao/doacao.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GetNomeComponent } from './get-nome/get-nome.component';
+import { GetTipoComponent } from './get-tipo/get-tipo.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 @NgModule({
   declarations: [
@@ -28,14 +35,19 @@ import { PutComponent } from './put/put.component';
     CadastroComponent,
     PerfilLateralComponent,
     MinhaContaComponent,
-    PutComponent
+    DoacaoComponent,
+    GetNomeComponent,
+    GetTipoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
